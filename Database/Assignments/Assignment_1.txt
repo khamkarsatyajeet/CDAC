@@ -1,0 +1,256 @@
+Subject - DATABASE 
+Assignment –1
+
+Creating sample tables and inserting values.
+Create the following tables with the given structures and insert sample data as specified: -
+
+===================================================================================
+
+
+
+C:\Program Files\MySQL\MySQL Server 9.0\bin>mysql -u satyajeet -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 45
+Server version: 9.0.1 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| performance_schema |
+| satyajeet          |
++--------------------+
+3 rows in set (0.00 sec)
+
+mysql> create table SALESPEOPLE (Snum int(4), Sname varchar(10), City varchar(10), Comm float(3,2));
+ERROR 1046 (3D000): No database selected
+mysql> use satyajeet
+Database changed
+mysql> create table SALESPEOPLE (Snum int(4), Sname varchar(10), City varchar(10), Comm float(3,2));
+Query OK, 0 rows affected, 2 warnings (0.04 sec)
+
+mysql> insert into SALESPEOPLE values (1001, 'Peel', 'London', .12);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into SALESPEOPLE values (1002, 'Serres', 'San Jose', .13);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into SALESPEOPLE values (1004, 'Motika', 'London', .11);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into SALESPEOPLE values (1007, 'Rifkin', 'Barcelona', .15);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into SALESPEOPLE values (1003, 'Axelrod', 'New York', .10);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from SALESPEOPLE;
++------+---------+-----------+------+
+| Snum | Sname   | City      | Comm |
++------+---------+-----------+------+
+| 1001 | Peel    | London    | 0.12 |
+| 1002 | Serres  | San Jose  | 0.13 |
+| 1004 | Motika  | London    | 0.11 |
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
++------+---------+-----------+------+
+5 rows in set (0.00 sec)
+
+mysql> ^C
+mysql>
+
+=============================================================================================
+
+
+C:\Program Files\MySQL\MySQL Server 9.0>
+
+C:\Program Files\MySQL\MySQL Server 9.0>mysql -u satyajeet -p
+'mysql' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Program Files\MySQL\MySQL Server 9.0>bin\mysql -u satyajeet -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 46
+Server version: 9.0.1 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> select user ();
++---------------------+
+| user ()             |
++---------------------+
+| satyajeet@localhost |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> show tables;
+ERROR 1046 (3D000): No database selected
+mysql> use satyajeet;
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_satyajeet |
++---------------------+
+| salespeople         |
++---------------------+
+1 row in set (0.02 sec)
+
+mysql> select * salespeople;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'salespeople' at line 1
+mysql> ^C
+mysql> select * from salespeople;
++------+---------+-----------+------+
+| Snum | Sname   | City      | Comm |
++------+---------+-----------+------+
+| 1001 | Peel    | London    | 0.12 |
+| 1002 | Serres  | San Jose  | 0.13 |
+| 1004 | Motika  | London    | 0.11 |
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
++------+---------+-----------+------+
+5 rows in set (0.00 sec)
+
+mysql> create table CUSTOMERS (Cnum int(4), Cname varchar(10), City varchar(10), Rating int(4), Snum int(4));
+Query OK, 0 rows affected, 3 warnings (0.06 sec)
+
+mysql> insert into orders values (3001, 18.69, STR_TO_DATE('03-OCT-1990', '%d-%b-%Y'), 2008, 1007);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from orders ;
++------+-------+------------+------+------+
+| Onum | Amt   | Odate      | Cnum | Snum |
++------+-------+------------+------+------+
+| 3001 | 18.69 | 1990-10-03 | 2008 | 1007 |
++------+-------+------------+------+------+
+1 row in set (0.00 sec)
+
+mysql> ^C
+mysql> insert into orders values (3003, 767.19, '03-OCT-1990', 2008, 1007);
+ERROR 1292 (22007): Incorrect date value: '03-OCT-1990' for column 'Odate' at row 1
+mysql> insert into orders values (3003, 767.19, 03-OCT-1990, 2008, 1007);
+ERROR 1054 (42S22): Unknown column 'OCT' in 'field list'
+mysql> insert into orders values (3003, 767.19, 1990-10-03, 2001, 1001);
+ERROR 1292 (22007): Incorrect date value: '1977' for column 'Odate' at row 1
+mysql> insert into orders values (3003, 767.19, '1990-10-03', 2001, 1001);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into orders values (3002, 1900.10, '1990-10-03', 2007, 1004);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into orders values (3005, 5160.45, '1990-10-03', 2003, 1002);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into orders values (3006, 1098.16, '1990-10-03', 2008, 1007);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into orders values (3009, 1713.23, '1990-10-04', 2002, 1003);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into orders values (3007, 75.75, '1990-10-04', 2004, 1002);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into orders values (3007, 75.75, '1990-10-04', 2004, 1002);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into orders values (3008, 4723.00, '1990-10-05', 2006, 1001);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into orders values (3010, 1309.95, '1990-10-06', 2004, 1002);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into orders values (3011, 9891.88, '1990-10-06', 2006, 1001);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from ORDERS ;
++------+---------+------------+------+------+
+| Onum | Amt     | Odate      | Cnum | Snum |
++------+---------+------------+------+------+
+| 3001 |   18.69 | 1990-10-03 | 2008 | 1007 |
+| 3003 |  767.19 | 1990-10-03 | 2001 | 1001 |
+| 3002 | 1900.10 | 1990-10-03 | 2007 | 1004 |
+| 3005 | 5160.45 | 1990-10-03 | 2003 | 1002 |
+| 3006 | 1098.16 | 1990-10-03 | 2008 | 1007 |
+| 3009 | 1713.23 | 1990-10-04 | 2002 | 1003 |
+| 3007 |   75.75 | 1990-10-04 | 2004 | 1002 |
+| 3007 |   75.75 | 1990-10-04 | 2004 | 1002 |
+| 3008 | 4723.00 | 1990-10-05 | 2006 | 1001 |
+| 3010 | 1309.95 | 1990-10-06 | 2004 | 1002 |
+| 3011 | 9891.88 | 1990-10-06 | 2006 | 1001 |
++------+---------+------------+------+------+
+11 rows in set (0.00 sec)
+
+mysql> delete from orders where Onum=3007;
+Query OK, 2 rows affected (0.01 sec)
+
+mysql> select * from ORDERS ;
++------+---------+------------+------+------+
+| Onum | Amt     | Odate      | Cnum | Snum |
++------+---------+------------+------+------+
+| 3001 |   18.69 | 1990-10-03 | 2008 | 1007 |
+| 3003 |  767.19 | 1990-10-03 | 2001 | 1001 |
+| 3002 | 1900.10 | 1990-10-03 | 2007 | 1004 |
+| 3005 | 5160.45 | 1990-10-03 | 2003 | 1002 |
+| 3006 | 1098.16 | 1990-10-03 | 2008 | 1007 |
+| 3009 | 1713.23 | 1990-10-04 | 2002 | 1003 |
+| 3008 | 4723.00 | 1990-10-05 | 2006 | 1001 |
+| 3010 | 1309.95 | 1990-10-06 | 2004 | 1002 |
+| 3011 | 9891.88 | 1990-10-06 | 2006 | 1001 |
++------+---------+------------+------+------+
+9 rows in set (0.00 sec)
+
+mysql> insert into orders values (3007, 75.75, '1990-10-04', 2004, 1002);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from ORDERS ;
++------+---------+------------+------+------+
+| Onum | Amt     | Odate      | Cnum | Snum |
++------+---------+------------+------+------+
+| 3001 |   18.69 | 1990-10-03 | 2008 | 1007 |
+| 3003 |  767.19 | 1990-10-03 | 2001 | 1001 |
+| 3002 | 1900.10 | 1990-10-03 | 2007 | 1004 |
+| 3005 | 5160.45 | 1990-10-03 | 2003 | 1002 |
+| 3006 | 1098.16 | 1990-10-03 | 2008 | 1007 |
+| 3009 | 1713.23 | 1990-10-04 | 2002 | 1003 |
+| 3008 | 4723.00 | 1990-10-05 | 2006 | 1001 |
+| 3010 | 1309.95 | 1990-10-06 | 2004 | 1002 |
+| 3011 | 9891.88 | 1990-10-06 | 2006 | 1001 |
+| 3007 |   75.75 | 1990-10-04 | 2004 | 1002 |
++------+---------+------------+------+------+
+10 rows in set (0.00 sec)
+
+mysql>
+mysql> select Onum, Amt, date_format(odate, '%d-%b-%Y') as Order_date
+    -> from orders;
++------+---------+-------------+
+| Onum | Amt     | Order_date  |
++------+---------+-------------+
+| 3001 |   18.69 | 03-Oct-1990 |
+| 3003 |  767.19 | 03-Oct-1990 |
+| 3002 | 1900.10 | 03-Oct-1990 |
+| 3005 | 5160.45 | 03-Oct-1990 |
+| 3006 | 1098.16 | 03-Oct-1990 |
+| 3009 | 1713.23 | 04-Oct-1990 |
+| 3008 | 4723.00 | 05-Oct-1990 |
+| 3010 | 1309.95 | 06-Oct-1990 |
+| 3011 | 9891.88 | 06-Oct-1990 |
+| 3007 |   75.75 | 04-Oct-1990 |
++------+---------+-------------+
+10 rows in set (0.00 sec)
