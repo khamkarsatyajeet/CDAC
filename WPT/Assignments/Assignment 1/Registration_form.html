@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Calibri, Arial;
+            padding-right: 221px;
+            margin-right: 251px;
+            margin-left: 251px;
+        } 
+        h2 {
+      color: #004980;
+    }
+    .section {
+      max-width: 900px;
+      margin-bottom:20px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      page-break-inside:avoid
+    }
+    label {
+      display: inline-block;
+      width: 125px;
+      margin-bottom: 10px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    input[type="number"] {
+      width: 250px;
+      padding: 5px;
+      margin-bottom: 8px;
+    }
+    .line {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    .full-width {
+      width: 80%;
+    }
+    #title {
+      text-align: center;
+    }
+    </style>
+</head>
+<body>
+    <h2 id = "title">Registration Form</h2>
+    <div class="section">
+        <h3>Date of Registration</h3>
+        <input type="date" name="registration_date">
+    </div>
+
+    <div class="section">
+        <h3>Personal Information</h3>
+        <label>Full Name: </label><input type="text">   
+        
+        <label>Nick Name: </label><input type="text">
+        <br><br>
+        <label>Date of Birth: </label><input type="date">
+        
+        <label>Email: </label><input type="email">
+        <br><br>
+        <label>Gender: </label>
+        <span class="line"><input type="radio" name="gender"> Male </span>
+        <span class="line"><input type="radio" name="gender"> Female </span>
+        <br><br>
+        <label>Marital Status: </label><input type="text">
+        
+        <label>Country: </label><input type="text">
+        <br><br>
+        <label>National ID No: </label><input type="text">
+        
+        <label>Place of Birth: </label><input type="text">
+        <br><br>
+        <label>Nationality: </label><input type="text">
+      
+        <label>Domicile: </label><input type="text">
+        <br><br>
+        <label>CP Domicile: </label><input type="text">
+        
+        <label>Start Time: </label><input type="text">
+        <br><br>
+        <label>Post Code: </label><input type="text">
+        
+        <label>Phone: </label><input type="text">
+    </div>
+    
+  <div class="section">
+    <h3>Address</h3>
+    <label>Present Address: </label><input type="text" class="full-width">
+    <br><br>
+    <label>The City: </label><input type="text">
+    <br><br>
+    <label>Pin Code: </label><input type="text">
+    <br><br>
+    <label>Present State: </label><input type="text">
+    <br><br>
+    <label>Student Trustee: </label><input type="text">
+  </div>
+
+  <div class="section">
+    <h3>School Address</h3>
+    <p>Euro School Pune</p>
+    <p>Tel-no:020-630123</p>
+    <p>euroschool@gmail.com</p>
+  </div>
+
+  <div class="section">
+    <label>Register Signature:</label>................<br><br>
+    <label>Officer Signature:</label>.................
+  </div>
+
+  <div class="section">
+    <p>Thank you for Registration</p>
+    
+  </div>
+</body>
+</html>
