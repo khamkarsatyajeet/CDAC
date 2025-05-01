@@ -1,0 +1,52 @@
+<!-- Que 1. Create an html file with a submit button and a paragraph. Now modify the style of the paragraph text through JavaScript code. 
+Task : Clicking on the button, the font, font size and colour of the paragraph text will be changed  -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Change Paragraph Style</title>
+    </head>
+
+    <style>
+        #myPara{
+            align-content: center;
+            text-align: center;
+        }
+
+        #heading {
+            align-content: center;
+            text-align: center;
+        }
+
+        #btn{
+            text-align: center;
+            align-items: center;
+            align-self: center;
+            align-content: center;
+            }
+    </style>
+
+    <body>
+        <h2 id="heading">Paragraph Styling</h2>
+
+        <p id="myPara">
+            It is rightly said that being disciplined is essential in<br?<var>
+                
+            </var> life. When a person leads a disciplined life, they set an easy path to success.
+        </p>
+        
+        <button onclick = "changeStyle()">Submit</button>
+        
+        
+        <script>
+        function changeStyle() {
+            var para = document.getElementById("myPara");
+            para.style.fontFamily = "Times new roman";
+            para.style.fontSize = "20px";
+            para.style.color = "blue";
+        }
+        </script>
+        
+        </body>
+        </html>
+   
